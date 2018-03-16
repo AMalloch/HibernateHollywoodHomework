@@ -23,4 +23,16 @@ public class StudioTest {
     public void getBudget() {
         assertEquals(20000000, studio.getBudget());
     }
+
+    @Test
+    public void canName() {
+        studio.setName("Dolba Studios");
+        assertEquals("Dolba Studios", studio.getName());
+    }
+
+    @Test
+    public void canSetBudget() {
+        studio.setBudget(21000000);
+        assertEquals(21000000, studio.getBudget());
+    }
 }
