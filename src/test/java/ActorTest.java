@@ -10,11 +10,13 @@ import static junit.framework.Assert.assertEquals;
 public class ActorTest {
 
     Film film;
+    Film film2;
     Actor actor;
 
     @Before
     public void before(){
         film = new Film("Terminator");
+        film2 = new Film("Frozen");
         actor = new Actor("John Connor", 0, film);
     }
 
@@ -34,6 +36,21 @@ public class ActorTest {
         assertEquals(film, actor.getAssigned_films());
     }
 
+    @Test
+    public void canSetName() {
+        actor.setName("Arnie Swarszasomething");
+        assertEquals("Arnie Swarszasomething", actor.getName());
+    }
 
+    @Test
+    public void canSetCurrentPay() {
+        actor.setCurrent_pay(100000);
+        assertEquals(100000, actor.getCurrent_pay());
+    }
 
+    @Test
+    public void canSetFilm() {
+        actor.setAssigned_films(film2);
+        assertEquals(film2, actor.getAssigned_films());
+    }
 }
