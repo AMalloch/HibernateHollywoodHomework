@@ -12,11 +12,11 @@
         <property name="hbm2ddl.auto">create-drop</property>
         <property name="show_sql">true</property>
 
-        <mapping class = "models.Actor"/>
-        <mapping class= "models.Actress"/>
-        <mapping class= "models.Director"/>
-        <mapping class= "models.Employee"/>
-        <mapping class= "models.Film"/>
-        <mapping class= "models.Studio"/>
+        <mapping class = "models.models.ActorTest"/>
+        <mapping class= "models.models.ActressTest"/>
+        <mapping class= "models.models.DirectorTest"/>
+        <mapping class= "models.models.Employee"/>
+        <mapping class= "models.models.FilmTest"/>
+        <mapping class= "models.models.StudioTest"/>
     </session-factory>
 </hibernate-configuration>
