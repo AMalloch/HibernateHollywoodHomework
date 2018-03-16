@@ -24,6 +24,16 @@ public class ActorTest {
         assertEquals("John Connor", actor.getName());
     }
 
+    @Test
+    public void canGetCurrentPay(){
+        assertEquals(0, actor.getCurrent_pay());
+    }
+
+    @Test
+    public void canGetAssignedFilms(){
+        assertEquals(film, actor.getAssigned_films());
+    }
+
 
 
 }
