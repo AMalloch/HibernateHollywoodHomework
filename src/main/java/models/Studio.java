@@ -16,10 +16,8 @@ public class Studio {
     public Studio() {
     }
 
-    public Studio(String name, Set<Employee> employees, Set<Film> films, int budget) {
+    public Studio(String name, int budget) {
         this.name = name;
-        this.employees = employees;
-        this.films = films;
         this.budget = budget;
     }
 

@@ -14,9 +14,8 @@ public class Film {
     public Film() {
     }
 
-    public Film(String name, Set<Employee> employees) {
+    public Film(String name) {
         this.name = name;
-        this.employees = employees;
     }
 
     @Id
