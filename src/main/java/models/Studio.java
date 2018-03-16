@@ -1,7 +1,10 @@
 package models;
 
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
+@Table(name="studios")
 public class Studio {
 
     private int id;
@@ -20,6 +23,9 @@ public class Studio {
         this.budget = budget;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -28,6 +34,7 @@ public class Studio {
         this.id = id;
     }
 
+    @Column(name="name")
     public String getName() {
         return name;
     }
@@ -36,6 +43,7 @@ public class Studio {
         this.name = name;
     }
 
+    @OneToMany(mappedBy = "studio")
     public Set<Employee> getEmployees() {
         return employees;
     }
@@ -44,6 +52,7 @@ public class Studio {
         this.employees = employees;
     }
 
+    @OneToMany(mappedBy = "film")
     public Set<Film> getFilms() {
         return films;
     }
@@ -52,6 +61,7 @@ public class Studio {
         this.films = films;
     }
 
+    @Column(name="budget")
     public int getBudget() {
         return budget;
     }

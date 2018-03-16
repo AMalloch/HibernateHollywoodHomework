@@ -2,24 +2,30 @@ package models;
 
 import behaviours.IPay;
 
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
+@Table(name="employees")
 public abstract class Employee implements IPay{
 
     private int id;
     private String name;
     private int current_pay;
-    private Set<Film> assigned_films;
+    private Film assigned_films;
 
     public Employee() {
     }
 
-    public Employee(String name, int current_pay, Set<Film> assigned_films) {
+    public Employee(String name, int current_pay, Film assigned_films) {
         this.name = name;
         this.current_pay = current_pay;
         this.assigned_films = assigned_films;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -28,6 +34,7 @@ public abstract class Employee implements IPay{
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -36,6 +43,7 @@ public abstract class Employee implements IPay{
         this.name = name;
     }
 
+    @Column(name = "current_pay")
     public int getCurrent_pay() {
         return current_pay;
     }
@@ -44,11 +52,13 @@ public abstract class Employee implements IPay{
         this.current_pay = current_pay;
     }
 
-    public Set<Film> getAssigned_films() {
+    @ManyToOne
+    @JoinColumn(name = "film_id", nullable = false)
+    public Film getAssigned_films() {
         return assigned_films;
     }
 
-    public void setAssigned_films(Set<Film> assigned_films) {
+    public void setAssigned_films(Film assigned_films) {
         this.assigned_films = assigned_films;
     }
 }
