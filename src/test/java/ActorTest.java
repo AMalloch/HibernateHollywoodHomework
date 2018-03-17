@@ -18,7 +18,9 @@ public class ActorTest {
     @Before
     public void before(){
         film = new Film("Terminator");
+        DBHelper.saveOrUpdate(film);
         film2 = new Film("Frozen");
+        DBHelper.saveOrUpdate(film2);
         actor = new Actor("John Connor", 0, film);
         DBHelper.saveOrUpdate(actor);
     }

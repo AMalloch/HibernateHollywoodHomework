@@ -72,4 +72,5 @@ public abstract class Employee implements IPay {
     public void setStudio(Studio studio) {
         this.studio = studio;
     }
+
 }

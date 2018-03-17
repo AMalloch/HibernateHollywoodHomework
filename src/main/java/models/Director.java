@@ -8,7 +8,7 @@ import java.util.Set;
 @Table(name="directors")
 public class Director extends Employee {
 
-    public Director(String name, int current_pay, Film assigned_film) {
-        super(name, current_pay, assigned_film);
+    public Director(String name, int current_pay, Film film) {
+        super(name, current_pay, film);
     }
 }
