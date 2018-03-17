@@ -7,20 +7,21 @@ import java.util.Set;
 
 @Entity
 @Table(name="employees")
-public abstract class Employee implements IPay{
+public abstract class Employee implements IPay {
 
     private int id;
     private String name;
     private int current_pay;
-    private Film assigned_films;
+    private Film film;
+    private Studio studio;
 
     public Employee() {
     }
 
-    public Employee(String name, int current_pay, Film assigned_films) {
+    public Employee(String name, int current_pay, Film film) {
         this.name = name;
         this.current_pay = current_pay;
-        this.assigned_films = assigned_films;
+        this.film = film;
     }
 
     @Id
@@ -53,12 +54,22 @@ public abstract class Employee implements IPay{
     }
 
     @ManyToOne
-    @JoinColumn(name = "film_id", nullable = false)
+    @JoinColumn(name="film_id", nullable = false)
     public Film getAssigned_films() {
-        return assigned_films;
+        return film;
     }
 
-    public void setAssigned_films(Film assigned_films) {
-        this.assigned_films = assigned_films;
+    public void setAssigned_films(Film film) {
+        this.film = film;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "studio_id", nullable = false)
+    public Studio getStudio() {
+        return studio;
+    }
+
+    public void setStudio(Studio studio) {
+        this.studio = studio;
     }
 }

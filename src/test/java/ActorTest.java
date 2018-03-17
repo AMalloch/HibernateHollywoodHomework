@@ -1,3 +1,5 @@
+import db.DBHelper;
+import models.Actor;
 import models.Actor;
 import models.Film;
 import org.junit.Before;
@@ -18,6 +20,7 @@ public class ActorTest {
         film = new Film("Terminator");
         film2 = new Film("Frozen");
         actor = new Actor("John Connor", 0, film);
+        DBHelper.saveOrUpdate(actor);
     }
 
 
@@ -52,5 +55,11 @@ public class ActorTest {
     public void canSetFilm() {
         actor.setAssigned_films(film2);
         assertEquals(film2, actor.getAssigned_films());
+    }
+
+    @Test
+    public void canSave(){
+        Actor foundActor = DBHelper.find(Actor.class, actor.getId());
+        assertEquals("John Connor", foundActor.getName());
     }
 }

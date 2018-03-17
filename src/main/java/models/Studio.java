@@ -41,7 +41,7 @@ public class Studio {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "studio")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "studio")
     public Set<Employee> getEmployees() {
         return employees;
     }
@@ -50,7 +50,7 @@ public class Studio {
         this.employees = employees;
     }
 
-    @OneToMany(mappedBy = "film")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "studio")
     public Set<Film> getFilms() {
         return films;
     }

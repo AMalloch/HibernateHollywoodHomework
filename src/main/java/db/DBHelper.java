@@ -1,8 +1,12 @@
 package db;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
+
+import java.util.List;
 
 public class DBHelper {
 
@@ -23,4 +27,29 @@ public class DBHelper {
             session.close();
         }
     }
+
+    public static <T> T getUnique(Criteria criteria){
+        T result = null;
+        try {
+            transaction = session.beginTransaction();
+            result = (T)criteria.uniqueResult();
+            transaction.commit();
+        } catch (HibernateException e){
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return result;
+    }
+
+    public static <T> T find(Class classType, int id){
+        session = HibernateUtil.getSessionFactory().openSession();
+        T result = null;
+        Criteria criteria = session.createCriteria(classType);
+        criteria.add(Restrictions.idEq(id));
+        result = getUnique(criteria);
+        return result;
+    }
+
 }
