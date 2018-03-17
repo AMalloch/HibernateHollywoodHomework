@@ -2,6 +2,7 @@ import db.DBHelper;
 import models.Actor;
 import models.Actor;
 import models.Film;
+import models.Studio;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,9 +15,11 @@ public class ActorTest {
     Film film;
     Film film2;
     Actor actor;
+    Studio studio;
 
     @Before
     public void before(){
+        studio = new Studio("Hollywood Studio", 20000000);
         film = new Film("Terminator");
         DBHelper.saveOrUpdate(film);
         film2 = new Film("Frozen");
