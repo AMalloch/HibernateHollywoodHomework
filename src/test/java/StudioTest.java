@@ -1,4 +1,6 @@
 
+import db.DBHelper;
+import models.Director;
 import models.Studio;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +13,8 @@ public class StudioTest {
 
     @Before
     public void before(){
-        studio = new Studio("Amaranth Studios", 20000000);
+        studio = new Studio("Hollywood Studios", 20000000);
+        DBHelper.saveOrUpdate(studio);
     }
 
     @Test
@@ -34,5 +37,11 @@ public class StudioTest {
     public void canSetBudget() {
         studio.setBudget(21000000);
         assertEquals(21000000, studio.getBudget());
+    }
+
+    @Test
+    public void canSave(){
+        Studio foundStudio = DBHelper.find(Studio.class, studio.getId());
+        assertEquals("Hollywood Studios", foundStudio.getName());
     }
 }

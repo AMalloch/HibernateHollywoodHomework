@@ -1,4 +1,6 @@
 
+import db.DBHelper;
+import models.Actress;
 import models.Director;
 import models.Film;
 import models.Studio;
@@ -16,10 +18,16 @@ public class DirectorTest {
 
     @Before
     public void before() {
-        studio = new Studio("Hollywood Studios", 20000000);
+
+        studio = new Studio("Hollywood Studio", 20000000);
+        DBHelper.saveOrUpdate(studio);
         film = new Film("Terminator", studio);
+        DBHelper.saveOrUpdate(film);
         film2 = new Film("Frozen", studio);
+        DBHelper.saveOrUpdate(film2);
         director = new Director("Maven Gradle", 0, film, studio);
+        DBHelper.saveOrUpdate(director);
+
     }
 
 
@@ -54,6 +62,12 @@ public class DirectorTest {
     public void canSetFilm() {
         director.setFilm(film2);
         assertEquals(film2, director.getFilm());
+    }
+
+    @Test
+    public void canSave(){
+        Director foundDirector = DBHelper.find(Director.class, director.getId());
+        assertEquals("Maven Gradle", foundDirector.getName());
     }
 
 }

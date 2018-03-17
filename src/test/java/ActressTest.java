@@ -1,4 +1,6 @@
 
+import db.DBHelper;
+import models.Actor;
 import models.Actress;
 import models.Film;
 import models.Studio;
@@ -16,10 +18,14 @@ public class ActressTest {
 
     @Before
     public void before() {
-        studio = new Studio("Hollywood Studios", 20000000);
+        studio = new Studio("Hollywood Studio", 20000000);
+        DBHelper.saveOrUpdate(studio);
         film = new Film("Terminator", studio);
+        DBHelper.saveOrUpdate(film);
         film2 = new Film("Frozen", studio);
+        DBHelper.saveOrUpdate(film2);
         actress = new Actress("Samantha Crinklecut", 0, film, studio);
+        DBHelper.saveOrUpdate(actress);
     }
 
 
@@ -56,5 +62,9 @@ public class ActressTest {
         assertEquals(film2, actress.getFilm());
     }
 
-
+    @Test
+    public void canSave(){
+        Actress foundActress = DBHelper.find(Actress.class, actress.getId());
+        assertEquals("Samantha Crinklecut", foundActress.getName());
+    }
 }
