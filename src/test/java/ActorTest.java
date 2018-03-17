@@ -1,8 +1,10 @@
+import com.sun.tools.javac.util.List;
 import db.DBHelper;
 import models.Actor;
 import models.Actor;
 import models.Film;
 import models.Studio;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,6 +17,8 @@ public class ActorTest {
     Film film;
     Film film2;
     Actor actor;
+    Actor actor2;
+    Actor actor3;
     Studio studio;
 
     @Before
@@ -27,6 +31,15 @@ public class ActorTest {
         DBHelper.saveOrUpdate(film2);
         actor = new Actor("John Connor", 0, film, studio);
         DBHelper.saveOrUpdate(actor);
+        actor2 = new Actor("Meriss Till", 0, film, studio);
+        DBHelper.saveOrUpdate(actor2);
+        actor3 = new Actor("Darren Middles", 0, film, studio);
+        DBHelper.saveOrUpdate(actor3);
+    }
+
+    @After
+    public void tearDown(){
+        DBHelper.delete(actor2);
     }
 
 
@@ -67,5 +80,12 @@ public class ActorTest {
     public void canSave(){
         Actor foundActor = DBHelper.find(Actor.class, actor.getId());
         assertEquals("John Connor", foundActor.getName());
+    }
+
+    @Test
+    public void canDelete(){
+        DBHelper.delete(actor3);
+        java.util.List<Object> actorList = DBHelper.getAll(Actor.class);
+        assertEquals(2, actorList.size());
     }
 }
