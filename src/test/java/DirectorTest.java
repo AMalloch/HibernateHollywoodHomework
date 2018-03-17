@@ -1,9 +1,6 @@
 
 import db.DBHelper;
-import models.Actress;
-import models.Director;
-import models.Film;
-import models.Studio;
+import models.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,6 +12,8 @@ public class DirectorTest {
     Film film;
     Film film2;
     Director director;
+    Director director2;
+    Director director3;
 
     @Before
     public void before() {
@@ -27,6 +26,10 @@ public class DirectorTest {
         DBHelper.saveOrUpdate(film2);
         director = new Director("Maven Gradle", 0, film, studio);
         DBHelper.saveOrUpdate(director);
+        director2 = new Director("Karl Pilkington", 0, film, studio);
+        director3 = new Director("Paul Sapphire", 0, film, studio);
+        DBHelper.saveOrUpdate(director2);
+        DBHelper.saveOrUpdate(director3);
 
     }
 
@@ -68,6 +71,13 @@ public class DirectorTest {
     public void canSave(){
         Director foundDirector = DBHelper.find(Director.class, director.getId());
         assertEquals("Maven Gradle", foundDirector.getName());
+    }
+
+    @Test
+    public void canDelete(){
+        DBHelper.delete(director3);
+        java.util.List<Object> directorList = DBHelper.getAll(Director.class);
+        assertEquals(2, directorList.size());
     }
 
 }

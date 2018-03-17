@@ -40,6 +40,7 @@ public class ActorTest {
     @After
     public void tearDown(){
         DBHelper.delete(actor2);
+        DBHelper.delete(actor3);
     }
 
 

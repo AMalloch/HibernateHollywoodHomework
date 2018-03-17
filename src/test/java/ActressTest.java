@@ -4,6 +4,7 @@ import models.Actor;
 import models.Actress;
 import models.Film;
 import models.Studio;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,6 +16,8 @@ public class ActressTest {
     Film film;
     Film film2;
     Actress actress;
+    Actress actress2;
+    Actress actress3;
 
     @Before
     public void before() {
@@ -26,6 +29,16 @@ public class ActressTest {
         DBHelper.saveOrUpdate(film2);
         actress = new Actress("Samantha Crinklecut", 0, film, studio);
         DBHelper.saveOrUpdate(actress);
+        actress2 = new Actress("Anna Kell", 0, film, studio);
+        DBHelper.saveOrUpdate(actress2);
+        actress3 = new Actress("Losi McPol", 0, film, studio);
+        DBHelper.saveOrUpdate(actress3);
+    }
+
+    @After
+    public void tearDown(){
+        DBHelper.delete(actress2);
+        DBHelper.delete(actress3);
     }
 
 
@@ -66,5 +79,12 @@ public class ActressTest {
     public void canSave(){
         Actress foundActress = DBHelper.find(Actress.class, actress.getId());
         assertEquals("Samantha Crinklecut", foundActress.getName());
+    }
+
+    @Test
+    public void canDelete(){
+        DBHelper.delete(actress2);
+        java.util.List<Object> actressList = DBHelper.getAll(Actress.class);
+        assertEquals(2, actressList.size());
     }
 }
