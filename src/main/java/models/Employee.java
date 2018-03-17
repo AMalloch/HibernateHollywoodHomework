@@ -55,11 +55,11 @@ public abstract class Employee implements IPay {
 
     @ManyToOne
     @JoinColumn(name="film_id", nullable = false)
-    public Film getAssigned_films() {
+    public Film getFilm() {
         return film;
     }
 
-    public void setAssigned_films(Film film) {
+    public void setFilm(Film film) {
         this.film = film;
     }
 

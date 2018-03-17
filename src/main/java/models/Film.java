@@ -39,7 +39,7 @@ public class Film {
         this.name = name;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy="employee")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="film")
     public Set<Employee> getEmployees() {
         return employees;
     }

@@ -33,7 +33,7 @@ public class DirectorTest {
 
     @Test
     public void canGetAssignedFilms() {
-        assertEquals(film, director.getAssigned_films());
+        assertEquals(film, director.getFilm());
     }
 
     @Test
@@ -50,8 +50,8 @@ public class DirectorTest {
 
     @Test
     public void canSetFilm() {
-        director.setAssigned_films(film2);
-        assertEquals(film2, director.getAssigned_films());
+        director.setFilm(film2);
+        assertEquals(film2, director.getFilm());
     }
 
 }

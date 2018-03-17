@@ -32,7 +32,7 @@ public class ActressTest {
 
     @Test
     public void canGetAssignedFilms() {
-        assertEquals(film, actress.getAssigned_films());
+        assertEquals(film, actress.getFilm());
     }
 
     @Test
@@ -49,8 +49,8 @@ public class ActressTest {
 
     @Test
     public void canSetFilm() {
-        actress.setAssigned_films(film2);
-        assertEquals(film2, actress.getAssigned_films());
+        actress.setFilm(film2);
+        assertEquals(film2, actress.getFilm());
     }
 
 

@@ -36,7 +36,7 @@ public class ActorTest {
 
     @Test
     public void canGetAssignedFilms(){
-        assertEquals(film, actor.getAssigned_films());
+        assertEquals(film, actor.getFilm());
     }
 
     @Test
@@ -53,8 +53,8 @@ public class ActorTest {
 
     @Test
     public void canSetFilm() {
-        actor.setAssigned_films(film2);
-        assertEquals(film2, actor.getAssigned_films());
+        actor.setFilm(film2);
+        assertEquals(film2, actor.getFilm());
     }
 
     @Test
