@@ -20,11 +20,12 @@ public class ActorTest {
     @Before
     public void before(){
         studio = new Studio("Hollywood Studio", 20000000);
-        film = new Film("Terminator");
+        DBHelper.saveOrUpdate(studio);
+        film = new Film("Terminator", studio);
         DBHelper.saveOrUpdate(film);
-        film2 = new Film("Frozen");
+        film2 = new Film("Frozen", studio);
         DBHelper.saveOrUpdate(film2);
-        actor = new Actor("John Connor", 0, film);
+        actor = new Actor("John Connor", 0, film, studio);
         DBHelper.saveOrUpdate(actor);
     }
 

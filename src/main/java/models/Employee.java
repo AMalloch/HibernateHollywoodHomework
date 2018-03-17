@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name="employees")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Employee implements IPay {
 
     private int id;
@@ -18,10 +18,11 @@ public abstract class Employee implements IPay {
     public Employee() {
     }
 
-    public Employee(String name, int current_pay, Film film) {
+    public Employee(String name, int current_pay, Film film, Studio studio) {
         this.name = name;
         this.current_pay = current_pay;
         this.film = film;
+        this.studio = studio;
     }
 
     @Id

@@ -1,7 +1,7 @@
 import db.DBHelper;
-import models.Actor;
-import models.Film;
-import models.Studio;
+import models.*;
+
+import java.util.Dictionary;
 
 public class Runner {
 
@@ -9,10 +9,14 @@ public class Runner {
 
         Studio studio= new Studio("Hollywood Studios", 20000000);
         DBHelper.saveOrUpdate(studio);
-        Film film = new Film("Terminator");
+        Film film = new Film("Terminator", studio);
         DBHelper.saveOrUpdate(film);
-        Actor actor = new Actor("John Connor", 0, film);
+        Actor actor = new Actor("John Connor", 0, film, studio);
         DBHelper.saveOrUpdate(actor);
+        Actress actress = new Actress("Sarah Connor", 0, film, studio);
+        DBHelper.saveOrUpdate(actress);
+        Director director = new Director("Mike Serious", 0, film, studio);
+        DBHelper.saveOrUpdate(director);
 
     }
 }

@@ -1,6 +1,7 @@
 
 
 import models.Film;
+import models.Studio;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -8,11 +9,13 @@ import static junit.framework.Assert.assertEquals;
 
 public class FilmTest {
 
-    private Film film;
+    Studio studio;
+    Film film;
 
     @Before
     public void before() {
-        film = new Film("Terminator");
+        studio = new Studio("Hollywood Studios", 20000000);
+        film = new Film("Terminator", studio);
     }
 
     @Test

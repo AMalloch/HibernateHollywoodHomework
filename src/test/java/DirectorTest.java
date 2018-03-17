@@ -1,6 +1,7 @@
 
 import models.Director;
 import models.Film;
+import models.Studio;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -8,16 +9,17 @@ import static junit.framework.Assert.assertEquals;
 
 public class DirectorTest {
 
-
+    Studio studio;
     Film film;
     Film film2;
     Director director;
 
     @Before
     public void before() {
-        film = new Film("Terminator");
-        film2 = new Film("Frozen");
-        director = new Director("Maven Gradle", 0, film);
+        studio = new Studio("Hollywood Studios", 20000000);
+        film = new Film("Terminator", studio);
+        film2 = new Film("Frozen", studio);
+        director = new Director("Maven Gradle", 0, film, studio);
     }
 
 

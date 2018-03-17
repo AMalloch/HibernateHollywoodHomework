@@ -15,8 +15,9 @@ public class Film {
     public Film() {
     }
 
-    public Film(String name) {
+    public Film(String name, Studio studio) {
         this.name = name;
+        this.studio = studio;
     }
 
     @Id
@@ -57,4 +58,5 @@ public class Film {
     public void setStudio(Studio studio) {
         this.studio = studio;
     }
+
 }
