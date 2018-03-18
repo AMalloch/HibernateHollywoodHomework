@@ -1,10 +1,7 @@
-
-
 import db.DBHelper;
-import models.Actor;
-import models.Director;
 import models.Film;
 import models.Studio;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,6 +23,13 @@ public class FilmTest {
         DBHelper.saveOrUpdate(film1);
     }
 
+    @After
+    public void tearDown(){
+        DBHelper.delete(studio);
+        DBHelper.delete(film);
+        DBHelper.delete(film1);
+    }
+
     @Test
     public void canGetName() {
         assertEquals("Terminator", film.getName());
@@ -45,7 +49,7 @@ public class FilmTest {
 
     @Test
     public void canDelete(){
-        DBHelper.delete(film);
+        DBHelper.delete(film1);
         java.util.List<Object> filmList = DBHelper.getAll(Film.class);
         assertEquals(1, filmList.size());
     }

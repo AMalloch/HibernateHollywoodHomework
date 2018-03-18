@@ -1,6 +1,7 @@
 
 import db.DBHelper;
 import models.*;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,6 +34,15 @@ public class DirectorTest {
 
     }
 
+    @After
+    public void tearDown(){
+        DBHelper.delete(studio);
+        DBHelper.delete(film);
+        DBHelper.delete(film2);
+        DBHelper.delete(director);
+        DBHelper.delete(director2);
+        DBHelper.delete(director3);
+    }
 
     @Test
     public void canGetName() {
@@ -78,6 +88,13 @@ public class DirectorTest {
         DBHelper.delete(director3);
         java.util.List<Object> directorList = DBHelper.getAll(Director.class);
         assertEquals(2, directorList.size());
+    }
+
+    @Test
+    public void canPay(){
+        director.payEmployee(500000);
+        assertEquals(500000, director.getCurrent_pay());
+        assertEquals(19500000, studio.getBudget());
     }
 
 }

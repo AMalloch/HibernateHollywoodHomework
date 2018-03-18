@@ -3,6 +3,7 @@ import db.DBHelper;
 import models.Actor;
 import models.Director;
 import models.Studio;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,9 +22,15 @@ public class StudioTest {
         DBHelper.saveOrUpdate(studio2);
     }
 
+    @After
+    public void tearDown(){
+        DBHelper.delete(studio);
+        DBHelper.delete(studio2);
+    }
+
     @Test
     public void getName() {
-        assertEquals("Amaranth Studios", studio.getName());
+        assertEquals("Hollywood Studios", studio.getName());
     }
 
     @Test

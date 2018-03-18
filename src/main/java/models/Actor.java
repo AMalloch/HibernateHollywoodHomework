@@ -14,4 +14,10 @@ public class Actor extends Employee{
 
     public Actor() {
     }
+
+    public int payEmployee(int amount) {
+        setCurrent_pay(amount);
+        getStudio().setBudget(getStudio().getBudget() - amount);
+        return (getStudio().getBudget());
+    }
 }

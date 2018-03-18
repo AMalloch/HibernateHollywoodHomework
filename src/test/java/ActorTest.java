@@ -39,6 +39,10 @@ public class ActorTest {
 
     @After
     public void tearDown(){
+        DBHelper.delete(studio);
+        DBHelper.delete(film);
+        DBHelper.delete(film2);
+        DBHelper.delete(actor);
         DBHelper.delete(actor2);
         DBHelper.delete(actor3);
     }
@@ -88,5 +92,12 @@ public class ActorTest {
         DBHelper.delete(actor3);
         java.util.List<Object> actorList = DBHelper.getAll(Actor.class);
         assertEquals(2, actorList.size());
+    }
+
+    @Test
+    public void canPay(){
+        actor.payEmployee(100000);
+        assertEquals(100000, actor.getCurrent_pay());
+        assertEquals(19900000, studio.getBudget());
     }
 }
