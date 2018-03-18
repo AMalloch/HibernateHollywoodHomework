@@ -24,14 +24,4 @@ public class Actor extends Employee{
         return (getStudio().getBudget());
     }
 
-    // refactor by making a getAll by class separate function ?
-    public int numberOfActorsByGenre(String genre) {
-        java.util.List<Actor> actorList = DBHelper.getAll(Actor.class);
-        java.util.List<Actor> actorByGenreList = new ArrayList<Actor>();
-        for (Actor actor : actorList) {
-            if (genre.equals (actor.getFilm().getGenre())) {
-                actorByGenreList.add(actor);
-            }
-        }return actorByGenreList.size();
-    }
 }

@@ -25,9 +25,9 @@ public class FilmTest {
 
     @After
     public void tearDown(){
-        DBHelper.delete(studio);
         DBHelper.delete(film);
         DBHelper.delete(film1);
+        DBHelper.delete(studio);
     }
 
     @Test
