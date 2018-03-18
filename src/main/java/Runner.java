@@ -19,7 +19,7 @@ public class Runner {
         Director director = new Director("Mike Serious", 0, film, studio);
         DBHelper.saveOrUpdate(director);
 
-        List<Actor> actorByGenre = DBHelper.findActorsByGenre("Thriller");
+        List<Actor> actorByGenre = DBHelper.numberOfActorsByGenre("Thriller");
 
     }
 }

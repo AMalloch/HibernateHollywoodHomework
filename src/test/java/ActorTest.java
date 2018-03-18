@@ -100,9 +100,8 @@ public class ActorTest {
     }
 
     @Test
-    public void findActorByGenreTest(){
-        java.util.List<Actor> actorByGenre = DBHelper.findActorsByGenre("Thriller");
-        assertEquals(3, actorByGenre.size());
+    public void numberOfActorsByGenreTest(){
+        DBHelper.getAll(Actor.class);
+        assertEquals(3, actor.numberOfActorsByGenre("Thriller"));
     }
-
 }

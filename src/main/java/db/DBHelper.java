@@ -91,22 +91,32 @@ public class DBHelper {
         return results;
     }
 
-    public static List<Actor> findActorsByGenre(String genre){
-        session = HibernateUtil.getSessionFactory().openSession();
-        List<Actor> results = null;
-        try{
-            transaction = session.beginTransaction();
-            Criteria criteria = session.createCriteria(Actor.class);
-            criteria.add(Restrictions.eq("Thriller", genre));
-            results = criteria.list();
-            transaction.commit();
-        } catch (HibernateException e) {
-            transaction.rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return results;
+    public static List<Actor> numberOfActorsByGenre(String genre) {
+        java.util.List<Actor> actorList = DBHelper.getAll(Actor.class);
+        java.util.List<Actor> actorByGenreList = new ArrayList<Actor>();
+        for (Actor actor : actorList) {
+            if (genre.equals (actor.getFilm().getGenre())) {
+                actorByGenreList.add(actor);
+            }
+        }return actorByGenreList;
     }
+
+//    public static List<Actor> findActorsByGenre(String genre){
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        List<Actor> results = null;
+//        try{
+//            transaction = session.beginTransaction();
+//            Criteria criteria = session.createCriteria(Actor.class);
+//            criteria.add(Restrictions.eq("genre", genre));
+//            results = criteria.list();
+//            transaction.commit();
+//        } catch (HibernateException e) {
+//            transaction.rollback();
+//            e.printStackTrace();
+//        } finally {
+//            session.close();
+//        }
+//        return results;
+//    }
 
 }
