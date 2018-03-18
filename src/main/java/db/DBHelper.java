@@ -91,6 +91,9 @@ public class DBHelper {
         return results;
     }
 
+    // loops through a array list actorList then asserts that genre = an actors film genre
+    // it then adds this to a new array called actorByGenreList which is then returned
+    // so you can use .size on it to find how many are on a certain genre.
     public static List<Actor> numberOfActorsByGenre(String genre) {
         java.util.List<Actor> actorList = DBHelper.getAll(Actor.class);
         java.util.List<Actor> actorByGenreList = new ArrayList<Actor>();

@@ -100,6 +100,12 @@ public class ActorTest {
     }
 
     @Test
+    public void canGetAllActors(){
+        List<Actor> allActors = DBHelper.getAll(Actor.class);
+        assertEquals(3, allActors.size());
+    }
+
+    @Test
     public void numberOfActorsByGenreTest(){
         List<Actor> actorListByGenre = DBHelper.numberOfActorsByGenre("Thriller");
         assertEquals(3, actorListByGenre.size());
