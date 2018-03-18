@@ -21,9 +21,9 @@ public class DirectorTest {
 
         studio = new Studio("Hollywood Studio", 20000000);
         DBHelper.saveOrUpdate(studio);
-        film = new Film("Terminator", studio);
+        film = new Film("Terminator", studio, "Thriller");
         DBHelper.saveOrUpdate(film);
-        film2 = new Film("Frozen", studio);
+        film2 = new Film("Frozen", studio, "Horror");
         DBHelper.saveOrUpdate(film2);
         director = new Director("Maven Gradle", 0, film, studio);
         DBHelper.saveOrUpdate(director);

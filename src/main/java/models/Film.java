@@ -11,13 +11,15 @@ public class Film {
     private String name;
     private Set<Employee> employees;
     private Studio studio;
+    private String genre;
 
     public Film() {
     }
 
-    public Film(String name, Studio studio) {
+    public Film(String name, Studio studio, String genre) {
         this.name = name;
         this.studio = studio;
+        this.genre = genre;
     }
 
     @Id
@@ -59,4 +61,12 @@ public class Film {
         this.studio = studio;
     }
 
+    @Column(name = "genre")
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
 }

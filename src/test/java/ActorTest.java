@@ -25,9 +25,9 @@ public class ActorTest {
     public void before(){
         studio = new Studio("Hollywood Studio", 20000000);
         DBHelper.saveOrUpdate(studio);
-        film = new Film("Terminator", studio);
+        film = new Film("Terminator", studio, "Thriller");
         DBHelper.saveOrUpdate(film);
-        film2 = new Film("Frozen", studio);
+        film2 = new Film("Frozen", studio, "Horror");
         DBHelper.saveOrUpdate(film2);
         actor = new Actor("John Connor", 0, film, studio);
         DBHelper.saveOrUpdate(actor);

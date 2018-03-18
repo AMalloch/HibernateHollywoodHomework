@@ -17,9 +17,9 @@ public class FilmTest {
     public void before() {
         studio = new Studio("Hollywood Studios", 20000000);
         DBHelper.saveOrUpdate(studio);
-        film = new Film("Terminator", studio);
+        film = new Film("Terminator", studio, "Thriller");
         DBHelper.saveOrUpdate(film);
-        film1 = new Film("Doomsday", studio);
+        film1 = new Film("Doomsday", studio, "Comedy");
         DBHelper.saveOrUpdate(film1);
     }
 
