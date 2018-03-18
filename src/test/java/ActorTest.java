@@ -1,4 +1,4 @@
-import com.sun.tools.javac.util.List;
+import java.util.List;
 import db.DBHelper;
 import models.*;
 import models.Actor;
@@ -101,7 +101,7 @@ public class ActorTest {
 
     @Test
     public void numberOfActorsByGenreTest(){
-        DBHelper.getAll(Actor.class);
-        assertEquals(3, actor.numberOfActorsByGenre("Thriller"));
+        List<Actor> actorListByGenre = DBHelper.numberOfActorsByGenre("Thriller");
+        assertEquals(3, actorListByGenre.size());
     }
 }
