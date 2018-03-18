@@ -2,6 +2,7 @@ import db.DBHelper;
 import models.*;
 
 import java.util.Dictionary;
+import java.util.List;
 
 public class Runner {
 
@@ -17,6 +18,8 @@ public class Runner {
         DBHelper.saveOrUpdate(actress);
         Director director = new Director("Mike Serious", 0, film, studio);
         DBHelper.saveOrUpdate(director);
+
+        List<Actor> actorByGenre = DBHelper.findActorsByGenre("Thriller");
 
     }
 }

@@ -1,13 +1,13 @@
 package db;
 
 import models.Actor;
-import models.Film;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DBHelper {
@@ -88,6 +88,24 @@ public class DBHelper {
         List<T> results = null;
         Criteria criteria = session.createCriteria(classType);
         results = getList(criteria);
+        return results;
+    }
+
+    public static List<Actor> findActorsByGenre(String genre){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Actor> results = null;
+        try{
+            transaction = session.beginTransaction();
+            Criteria criteria = session.createCriteria(Actor.class);
+            criteria.add(Restrictions.eq("Thriller", genre));
+            results = criteria.list();
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
         return results;
     }
 
