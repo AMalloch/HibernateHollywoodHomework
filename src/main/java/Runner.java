@@ -9,7 +9,7 @@ public class Runner {
 
         Studio studio= new Studio("Hollywood Studios", 20000000);
         DBHelper.saveOrUpdate(studio);
-        Film film = new Film("Terminator", studio);
+        Film film = new Film("Terminator", studio, "Thriller");
         DBHelper.saveOrUpdate(film);
         Actor actor = new Actor("John Connor", 0, film, studio);
         DBHelper.saveOrUpdate(actor);

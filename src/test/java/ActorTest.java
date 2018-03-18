@@ -1,9 +1,7 @@
 import com.sun.tools.javac.util.List;
 import db.DBHelper;
+import models.*;
 import models.Actor;
-import models.Actor;
-import models.Film;
-import models.Studio;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -99,5 +97,10 @@ public class ActorTest {
         actor.payEmployee(100000);
         assertEquals(100000, actor.getCurrent_pay());
         assertEquals(19900000, studio.getBudget());
+    }
+
+    @Test
+    public void numberOfActorsByGenreTest(){
+        assertEquals(1, actor.numberOfActorsByGenre("Thriller"));
     }
 }

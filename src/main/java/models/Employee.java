@@ -3,11 +3,10 @@ package models;
 import behaviours.IPay;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Employee implements IPay {
+public abstract class Employee implements IPay{
 
     private int id;
     private String name;
