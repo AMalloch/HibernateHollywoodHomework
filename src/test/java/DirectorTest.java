@@ -90,11 +90,4 @@ public class DirectorTest {
         assertEquals(2, directorList.size());
     }
 
-    @Test
-    public void canPay(){
-        director.payEmployee(500000);
-        assertEquals(500000, director.getCurrent_pay());
-        assertEquals(19500000, studio.getBudget());
-    }
-
 }

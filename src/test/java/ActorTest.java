@@ -94,13 +94,6 @@ public class ActorTest {
     }
 
     @Test
-    public void canPay(){
-        actor.payEmployee(100000);
-        assertEquals(100000, actor.getCurrent_pay());
-        assertEquals(19900000, studio.getBudget());
-    }
-
-    @Test
     public void canGetAllActors(){
         List<Actor> allActors = DBHelper.getAll(Actor.class);
         assertEquals(3, allActors.size());

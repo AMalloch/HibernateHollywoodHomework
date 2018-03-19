@@ -92,10 +92,4 @@ public class ActressTest {
         assertEquals(2, actressList.size());
     }
 
-    @Test
-    public void canPay(){
-        actress.payEmployee(300000);
-        assertEquals(300000, actress.getCurrent_pay());
-        assertEquals(19700000, studio.getBudget());
-    }
 }
