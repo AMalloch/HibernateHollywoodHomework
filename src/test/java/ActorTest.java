@@ -37,12 +37,13 @@ public class ActorTest {
 
     @After
     public void tearDown(){
-        DBHelper.delete(studio);
-        DBHelper.delete(film);
-        DBHelper.delete(film2);
         DBHelper.delete(actor);
         DBHelper.delete(actor2);
         DBHelper.delete(actor3);
+        DBHelper.delete(studio);
+        DBHelper.delete(film);
+        DBHelper.delete(film2);
+        DBHelper.delete(studio);
     }
 
 
@@ -110,4 +111,5 @@ public class ActorTest {
         List<Actor> actorListByGenre = DBHelper.numberOfActorsByGenre("Thriller");
         assertEquals(3, actorListByGenre.size());
     }
+
 }

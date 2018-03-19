@@ -2,6 +2,7 @@
 import db.DBHelper;
 import models.Actor;
 import models.Director;
+import models.Film;
 import models.Studio;
 import org.junit.After;
 import org.junit.Before;
@@ -13,9 +14,15 @@ public class StudioTest {
 
     Studio studio;
     Studio studio2;
+    Actor actor;
+    Film film;
 
     @Before
     public void before(){
+        actor = new Actor("John Connor", 0, film, studio);
+        DBHelper.saveOrUpdate(actor);
+        film = new Film("Terminator", studio, "Thriller");
+        DBHelper.saveOrUpdate(film);
         studio = new Studio("Hollywood Studios", 20000000);
         DBHelper.saveOrUpdate(studio);
         studio2 = new Studio("Gorva Productions", 20000000);
@@ -61,5 +68,12 @@ public class StudioTest {
         DBHelper.delete(studio2);
         java.util.List<Object> studioList = DBHelper.getAll(Studio.class);
         assertEquals(1, studioList.size());
+    }
+
+    @Test
+    public void canPayEmployee(){
+        studio.payEmployeeViaStudio(actor, 100000);
+        assertEquals(100000, actor.getCurrent_pay());
+        assertEquals(19900000, studio.getBudget());
     }
 }

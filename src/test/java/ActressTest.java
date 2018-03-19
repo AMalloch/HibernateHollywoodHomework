@@ -37,12 +37,12 @@ public class ActressTest {
 
     @After
     public void tearDown(){
-        DBHelper.delete(studio);
-        DBHelper.delete(film);
-        DBHelper.delete(film2);
         DBHelper.delete(actress);
         DBHelper.delete(actress2);
         DBHelper.delete(actress3);
+        DBHelper.delete(film);
+        DBHelper.delete(film2);
+        DBHelper.delete(studio);
     }
 
 

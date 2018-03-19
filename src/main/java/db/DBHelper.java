@@ -95,15 +95,15 @@ public class DBHelper {
     // it then adds this to a new array called actorByGenreList which is then returned
     // so you can use .size on it to find how many are on a certain genre.
     public static List<Actor> numberOfActorsByGenre(String genre) {
-        java.util.List<Actor> actorList = DBHelper.getAll(Actor.class);
-        java.util.List<Actor> actorByGenreList = new ArrayList<Actor>();
+        List<Actor> actorList = DBHelper.getAll(Actor.class);
+        List<Actor> actorByGenreList = new ArrayList<Actor>();
         for (Actor actor : actorList) {
             if (genre.equals (actor.getFilm().getGenre())) {
                 actorByGenreList.add(actor);
             }
         }return actorByGenreList;
     }
-
+//
 //    public static List<Actor> findActorsByGenre(String genre){
 //        session = HibernateUtil.getSessionFactory().openSession();
 //        List<Actor> results = null;

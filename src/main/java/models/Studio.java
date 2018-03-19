@@ -67,4 +67,9 @@ public class Studio {
     public void setBudget(int budget) {
         this.budget = budget;
     }
+
+    public void payEmployeeViaStudio(Employee employee, int amount) {
+        employee.setCurrent_pay(amount);
+        this.budget -= amount;
+    }
 }
